@@ -64,7 +64,6 @@ async def log_requests(request: Request, call_next):
 async def predict(body: PredictionRequest):
     try:
         await logger.info(f"Processing prediction request with id: {body.id}")
-        # Здесь будет вызов вашей модели
         answer, reasoning, sources= await chat_with_vsegpt(body.query)  # Замените на реальный вызов модели
 
         response = PredictionResponse(
@@ -86,7 +85,6 @@ async def predict(body: PredictionRequest):
 
 client = OpenAI(
     api_key= os.getenv('GPT_KEY'),
-    # ваш ключ в VseGPT после регистрации
     base_url="https://api.vsegpt.ru/v1",
 )
 import re
