@@ -17,7 +17,7 @@ logger = None
 
 class PredictionResponse(BaseModel):
     id: int
-    answer: str
+    answer: int
     reasoning: str
     sources: List[HttpUrl]
 
@@ -68,7 +68,7 @@ async def predict(body: PredictionRequest):
 
         response = PredictionResponse(
             id=body.id,
-            answer=str(answer),
+            answer=answer,
             reasoning=reasoning,
             sources=sources,
         )
